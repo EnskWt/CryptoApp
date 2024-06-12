@@ -30,9 +30,9 @@ namespace CryptoApp.UI.Pages
             Content = stackLayout;
         }
 
-        protected override Layout BuildPageLayout()
+        protected override async Task<Layout> BuildPageLayout()
         {
-            var appLayout = base.BuildPageLayout();
+            var appLayout = await base.BuildPageLayout();
 
             return appLayout;
         }

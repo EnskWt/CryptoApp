@@ -7,26 +7,30 @@ namespace CryptoApp.UI.Pages.BasePage
     {
         #region Reusable components
 
-        protected Label GetBigLabel(LabelType labelType)
+        protected async Task<Label> GetBigLabel(LabelType labelType)
         {
-            return new Label
+            var label = new Label
             {
-                Text = LanguageManager.GetLabelText(labelType),
+                Text = await LanguageManager.GetLabelText(labelType),
                 FontSize = 24,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
             };
+
+            return await Task.FromResult(label);
         }
 
-        protected Label GetMediumLabel(LabelType labelType)
+        protected async Task<Label> GetMediumLabel(LabelType labelType)
         {
-            return new Label
+            var label = new Label
             {
-                Text = LanguageManager.GetLabelText(labelType),
+                Text = await LanguageManager.GetLabelText(labelType),
                 FontSize = 16,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center
             };
+
+            return await Task.FromResult(label);
         }
 
         #endregion
@@ -34,7 +38,7 @@ namespace CryptoApp.UI.Pages.BasePage
 
         #region Specific components
 
-        private View GetNavigationBar()
+        private async Task<View> GetNavigationBar()
         {
             var navBar = new Grid
             {
@@ -46,28 +50,42 @@ namespace CryptoApp.UI.Pages.BasePage
             navBar.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             navBar.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 
-            var backButton = GetBackButton();
+            var backButton = await GetBackButton();
             if (backButton != null)
             {
                 navBar.Children.Add(backButton);
                 Grid.SetColumn(backButton, 0);
             }
 
-            var titleLabel = GetPageTitleLabel();
+            var titleLabel = await GetPageTitleLabel();
             if (titleLabel != null)
             {
                 navBar.Children.Add(titleLabel);
                 Grid.SetColumn(titleLabel, 1);
             }
 
-            return navBar;
+            return await Task.FromResult(navBar);
         }
 
-        private View GetBackButton()
+        private async Task<ActivityIndicator> GetLoader()
+        {
+            var loader = new ActivityIndicator
+            {
+                IsRunning = false,
+                IsVisible = false,
+                Color = Colors.Blue,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            return await Task.FromResult(loader);
+        }
+
+        private async Task<View> GetBackButton()
         {
             var backButton = new Button
             {
-                Text = LanguageManager.GetLabelText(LabelType.BackButtonLabel),
+                Text = await LanguageManager.GetLabelText(LabelType.BackButtonLabel),
                 FontSize = 14,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
@@ -80,14 +98,14 @@ namespace CryptoApp.UI.Pages.BasePage
              
             App.StateStorage.BackButton = backButton;
 
-            return backButton;
+            return await Task.FromResult(backButton);
         }
 
-        private Label GetPageTitleLabel()
+        private async Task<Label> GetPageTitleLabel()
         {
             var titleLabel = new Label
             {
-                Text = PageHelper.GetPageTitle(GetType()),
+                Text = await PageHelper.GetPageTitle(GetType()),
                 FontSize = 22,
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
@@ -95,7 +113,7 @@ namespace CryptoApp.UI.Pages.BasePage
                 Padding = new Thickness(0, 0, 15, 0)
             };
 
-            return titleLabel;
+            return await Task.FromResult(titleLabel);
         }
 
         #endregion

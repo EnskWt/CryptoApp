@@ -8,23 +8,23 @@ namespace CryptoApp.UI.LanguageFramework
 {
     public class LanguageHelper
     {
-        public static List<string> GetLanguagesList()
+        public static async Task<List<string>> GetLanguagesList()
         {
             var languages = Enum.GetValues(typeof(Language))
                     .Cast<Language>()
                     .Select(lang => lang.GetDescription())
                     .ToList();
 
-            return languages;
+            return await Task.FromResult(languages);
         }
 
-        public static Language GetLanguageByDescription(string description)
+        public static async Task<Language> GetLanguageByDescription(string description)
         {
             var language = Enum.GetValues(typeof(Language))
                     .Cast<Language>()
                     .FirstOrDefault(lang => lang.GetDescription() == description);
 
-            return language;
+            return await Task.FromResult(language);
         }
     }
 }

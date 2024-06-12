@@ -15,13 +15,13 @@ namespace CryptoApp.UI.Pages.SettingsPage
     [PageTitle("Settings")]
     public partial class SettingsPage : ApplicationPage
     {
-        protected override Layout BuildPageLayout()
+        protected override async Task<Layout> BuildPageLayout()
         {
-            var appLayout = base.BuildPageLayout();
+            var appLayout = await base.BuildPageLayout();
 
-            var themeLabel = GetMediumLabel(LabelType.ChangeAppThemeLabel);
+            var themeLabel = await GetMediumLabel(LabelType.ChangeAppThemeLabel);
 
-            var themeSwitch = GetThemeSwitch();
+            var themeSwitch = await GetThemeSwitch();
 
             var themeLayout = new StackLayout
             {
@@ -32,9 +32,9 @@ namespace CryptoApp.UI.Pages.SettingsPage
                 Children = { themeLabel, themeSwitch }
             };
 
-            var languageLabel = GetMediumLabel(LabelType.ChangeAppLanguageLabel);
+            var languageLabel = await GetMediumLabel(LabelType.ChangeAppLanguageLabel);
 
-            var languagePicker = GetLanguagePicker();
+            var languagePicker = await GetLanguagePicker();
 
             var languageLayout = new StackLayout
             {
@@ -59,7 +59,7 @@ namespace CryptoApp.UI.Pages.SettingsPage
             return appLayout;
         }
 
-        private void OnThemeSwitchToggled(object? sender, ToggledEventArgs e)
+        private async void OnThemeSwitchToggled(object? sender, ToggledEventArgs e)
         {
             if (Application.Current == null)
             {
@@ -74,9 +74,11 @@ namespace CryptoApp.UI.Pages.SettingsPage
             Preferences.Set("AppTheme", e.Value ? "Dark" : "Light");
 
             Application.Current.UserAppTheme = e.Value ? AppTheme.Dark : AppTheme.Light;
+
+            await Task.CompletedTask;
         }
 
-        private void OnLanguagePickerSelectedIndexChanged(object? sender, EventArgs e)
+        private async void OnLanguagePickerSelectedIndexChanged(object? sender, EventArgs e)
         {
             if (sender == null)
             {
@@ -92,10 +94,12 @@ namespace CryptoApp.UI.Pages.SettingsPage
 
             var selectedLanguage = picker.Items[picker.SelectedIndex];
 
-            var language = LanguageHelper.GetLanguageByDescription(selectedLanguage);
+            var language = await LanguageHelper.GetLanguageByDescription(selectedLanguage);
 
             Preferences.Set("AppLanguage", language.ToString());
             App.StateStorage.CurrentLanguage = language;
+
+            await Task.CompletedTask;
         }
     }
 }

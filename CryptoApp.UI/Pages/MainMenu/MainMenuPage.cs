@@ -7,44 +7,18 @@ namespace CryptoApp.UI.Pages.MainMenu
     [PageTitle("Main Menu")]
     public partial class MainMenuPage : ApplicationPage
     {
+        private readonly IServiceProvider _serviceProvider;
+
         private List<Type> _optionPages => App.StateStorage.MainMenuOptions;
 
-        //protected override Layout BuildPageLayout()
-        //{
-        //    var appLayout = base.BuildPageLayout();
-
-        //    var mainLayout = new FlexLayout
-        //    {
-        //        Direction = FlexDirection.Column,
-        //        JustifyContent = FlexJustify.Center,
-        //        AlignItems = FlexAlignItems.Center,
-        //        AlignContent = FlexAlignContent.Center,
-        //    };
-
-        //    var buttonLayout = new FlexLayout
-        //    {
-        //        Direction = FlexDirection.Row,
-        //        Wrap = FlexWrap.Wrap,
-        //        JustifyContent = FlexJustify.Center,
-        //        AlignItems = FlexAlignItems.Center,
-        //        AlignContent = FlexAlignContent.Center
-        //    };
-
-        //    foreach (var pageType in _optionPages)
-        //    {
-        //        var button = GetMenuOptionButton(pageType);
-        //        buttonLayout.Children.Add(button);
-        //    }
-
-        //    mainLayout.Children.Add(buttonLayout);
-        //    appLayout.Children.Add(mainLayout);
-
-        //    return appLayout;
-        //}
-
-        protected override Layout BuildPageLayout()
+        public MainMenuPage(IServiceProvider serviceProvider) : base()
         {
-            var appLayout = base.BuildPageLayout();
+            _serviceProvider = serviceProvider;
+        }
+
+        protected override async Task<Layout> BuildPageLayout()
+        {
+            var appLayout = await base.BuildPageLayout();
 
             var mainLayout = new StackLayout
             {
@@ -77,7 +51,7 @@ namespace CryptoApp.UI.Pages.MainMenu
 
             foreach (var pageType in _optionPages)
             {
-                var button = GetMenuOptionButton(pageType);
+                var button = await GetMenuOptionButton(pageType);
 
                 buttonLayout.Children.Add(button);
                 Grid.SetRow(button, row);
@@ -101,7 +75,11 @@ namespace CryptoApp.UI.Pages.MainMenu
 
         private async Task OnMenuOptionButtonClicked(Type pageType)
         {
-            var page = (Page?)Activator.CreateInstance(pageType);
+            var page = (Page?)_serviceProvider.GetService(pageType);
+            if (page == null)
+            {
+                throw new NullReferenceException("Page is not found");
+            }
             await Navigation.PushAsync(page);
         }
     }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoApp.UI", "CryptoApp.UI\CryptoApp.UI.csproj", "{AAD672F2-DB7B-4DDF-86FB-B812C1237A81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoApp.UI", "CryptoApp.UI\CryptoApp.UI.csproj", "{AAD672F2-DB7B-4DDF-86FB-B812C1237A81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoApp.Services", "CryptoApp.Services\CryptoApp.Services.csproj", "{769B7ECB-E64E-4C68-B471-373BACD82955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoApp.DataFetcher", "CryptoApp.DataFetcher\CryptoApp.DataFetcher.csproj", "{5E34247F-E9E8-45F3-BE36-618B739EE958}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,14 @@ Global
 		{AAD672F2-DB7B-4DDF-86FB-B812C1237A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD672F2-DB7B-4DDF-86FB-B812C1237A81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAD672F2-DB7B-4DDF-86FB-B812C1237A81}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{769B7ECB-E64E-4C68-B471-373BACD82955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769B7ECB-E64E-4C68-B471-373BACD82955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769B7ECB-E64E-4C68-B471-373BACD82955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769B7ECB-E64E-4C68-B471-373BACD82955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E34247F-E9E8-45F3-BE36-618B739EE958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E34247F-E9E8-45F3-BE36-618B739EE958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E34247F-E9E8-45F3-BE36-618B739EE958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E34247F-E9E8-45F3-BE36-618B739EE958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

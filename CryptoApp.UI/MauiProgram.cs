@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CryptoApp.UI.ExtensionMethods;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
+using System.Reflection;
 
 namespace CryptoApp.UI
 {
@@ -8,6 +11,17 @@ namespace CryptoApp.UI
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            using var stream = assembly.GetManifestResourceStream("CryptoApp.UI.appsettings.json");
+
+            var config = new ConfigurationBuilder()
+                        .AddJsonStream(stream!)
+                        .Build();
+
+            builder.Configuration.AddConfiguration(config);
+            builder.Services.AddSingleton<IConfiguration>(config);
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -16,22 +30,31 @@ namespace CryptoApp.UI
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.Configure();
+
+            builder.Services.AddSingleton<App>();
+
             // TODO
 #if WINDOWS
-        SwitchHandler.Mapper.AppendToMapping("Custom", (h, v) =>
-        {
-            h.PlatformView.OffContent = string.Empty;
-            h.PlatformView.OnContent = string.Empty;
+            SwitchHandler.Mapper.AppendToMapping("Custom", (h, v) =>
+            {
+                h.PlatformView.OffContent = string.Empty;
+                h.PlatformView.OnContent = string.Empty;
 
-            h.PlatformView.MinWidth = 0;
-        });
+                h.PlatformView.MinWidth = 0;
+            });
 #endif
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var mauiApp = builder.Build();
+
+            var serviceProvider = mauiApp.Services;
+
+            var app = serviceProvider.GetRequiredService<App>();
+            return mauiApp;
         }
     }
 }

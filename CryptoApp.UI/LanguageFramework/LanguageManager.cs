@@ -17,7 +17,7 @@ namespace CryptoApp.UI.LanguageFramework
             { Language.Ukranian, new UkranianVocabulary() }
         };
 
-        public static string GetLabelText(LabelType label)
+        public static async Task<string> GetLabelText(LabelType label)
         {
             var language = ((App)Application.Current!).StateStorage.CurrentLanguage;
             var requiredVocabulary = vocabularies[language];
@@ -26,10 +26,10 @@ namespace CryptoApp.UI.LanguageFramework
                 throw new Exception("Vocabulary not found for language: " + language);
             }
 
-            return requiredVocabulary.GetLabelByLabelType(label);
+            return await requiredVocabulary.GetLabelByLabelType(label);
         }
 
-        public static string GetPageName(string pageName)
+        public static async Task<string> GetPageName(string pageName)
         {
             var language = ((App)Application.Current!).StateStorage.CurrentLanguage;
             var requiredVocabulary = vocabularies[language];
@@ -38,7 +38,7 @@ namespace CryptoApp.UI.LanguageFramework
                 throw new Exception("Vocabulary not found for language: " + language);
             }
 
-            return requiredVocabulary.GetPageByPageName(pageName);
+            return await requiredVocabulary.GetPageByPageName(pageName);
         }
     }
 }

@@ -6,13 +6,17 @@ namespace CryptoApp.UI
 {
     public partial class App : Application
     {
+        private readonly IServiceProvider _serviceProvider;
+
         public StateStorage StateStorage { get; } = new StateStorage();
 
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainMenuPage());
+            _serviceProvider = serviceProvider;
+
+            MainPage = new NavigationPage(_serviceProvider.GetRequiredService<MainMenuPage>());
         }
 
         protected override void OnStart()

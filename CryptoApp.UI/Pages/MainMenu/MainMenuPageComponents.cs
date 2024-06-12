@@ -10,11 +10,11 @@ namespace CryptoApp.UI.Pages.MainMenu
 {
     public partial class MainMenuPage : ApplicationPage
     {
-        private Button GetMenuOptionButton(Type pageType)
+        private async Task<Button> GetMenuOptionButton(Type pageType)
         {
             var button = new Button
             {
-                Text = PageHelper.GetPageTitle(pageType),
+                Text = await PageHelper.GetPageTitle(pageType),
                 CornerRadius = 10,
                 BackgroundColor = Color.FromRgb(211, 211, 211),
                 HorizontalOptions = LayoutOptions.Center,
@@ -26,7 +26,7 @@ namespace CryptoApp.UI.Pages.MainMenu
 
             button.Clicked += async (sender, e) => await OnMenuOptionButtonClicked(pageType);
 
-            return button;
+            return await Task.FromResult(button);
         }
     }
 }

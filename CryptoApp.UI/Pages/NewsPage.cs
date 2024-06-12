@@ -11,28 +11,9 @@ namespace CryptoApp.UI.Pages
     [PageTitle("News")]
     public class NewsPage : ApplicationPage
     {
-        public NewsPage()
+        protected override async Task<Layout> BuildPageLayout()
         {
-            var stackLayout = new StackLayout
-            {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-            };
-
-            var label = new Label
-            {
-                Text = "NewsPage",
-                FontSize = 24
-            };
-
-            stackLayout.Children.Add(label);
-
-            Content = stackLayout;
-        }
-
-        protected override Layout BuildPageLayout()
-        {
-            var appLayout = base.BuildPageLayout();
+            var appLayout = await base.BuildPageLayout();
 
             return appLayout;
         }

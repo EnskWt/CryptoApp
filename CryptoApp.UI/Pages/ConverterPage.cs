@@ -6,28 +6,9 @@ namespace CryptoApp.UI.Pages;
 [PageTitle("Converter")]
 public class ConverterPage : ApplicationPage
 {
-	public ConverterPage()
-	{
-        var stackLayout = new StackLayout
-        {
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center,
-        };
-
-        var label = new Label
-        {
-            Text = "ConverterPage",
-            FontSize = 24
-        };
-
-        stackLayout.Children.Add(label);
-
-        Content = stackLayout;
-    }
-
-    protected override Layout BuildPageLayout()
+    protected override async Task<Layout> BuildPageLayout()
     {
-        var appLayout = base.BuildPageLayout();
+        var appLayout = await base.BuildPageLayout();
 
         return appLayout;
     }

@@ -14,8 +14,8 @@ namespace CryptoApp.UI.LanguageFramework
         
         Dictionary<string, string> Pages { get; }
 
-        public string GetLabelByLabelType(LabelType labelType) => Labels.TryGetValue(labelType, out var value) ? value : string.Empty;
+        public async Task<string> GetLabelByLabelType(LabelType labelType) => await Task.FromResult(Labels.TryGetValue(labelType, out var value) ? value : string.Empty);
 
-        public string GetPageByPageName(string pageName) => Pages.TryGetValue(pageName, out var value) ? value : string.Empty;
+        public async Task<string> GetPageByPageName(string pageName) => await Task.FromResult(Pages.TryGetValue(pageName, out var value) ? value : string.Empty);
     }
 }

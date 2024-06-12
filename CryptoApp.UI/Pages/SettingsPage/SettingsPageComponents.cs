@@ -10,7 +10,7 @@ namespace CryptoApp.UI.Pages.SettingsPage
 {
     public partial class SettingsPage : ApplicationPage
     {
-        private Switch GetThemeSwitch()
+        private async Task<Switch> GetThemeSwitch()
         {
             var themeSwitch = new Switch
             {
@@ -20,12 +20,12 @@ namespace CryptoApp.UI.Pages.SettingsPage
             };
             themeSwitch.Toggled += OnThemeSwitchToggled;
 
-            return themeSwitch;
+            return await Task.FromResult(themeSwitch);
         }
 
-        private Picker GetLanguagePicker()
+        private async Task<Picker> GetLanguagePicker()
         {
-            var languages = LanguageHelper.GetLanguagesList();
+            var languages = await LanguageHelper.GetLanguagesList();
 
             var languagePicker = new Picker
             {
@@ -36,7 +36,7 @@ namespace CryptoApp.UI.Pages.SettingsPage
             };
             languagePicker.SelectedIndexChanged += OnLanguagePickerSelectedIndexChanged;
 
-            return languagePicker;
+            return await Task.FromResult(languagePicker);
         }
     }
 }

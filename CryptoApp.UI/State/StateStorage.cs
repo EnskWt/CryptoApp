@@ -1,32 +1,6 @@
 ﻿using CryptoApp.UI.LanguageFramework;
 using CryptoApp.UI.Pages;
-
-/* Необъединенное слияние из проекта "CryptoApp.UI (net8.0-windows10.0.19041.0)"
-До:
-using System;
-После:
-using CryptoApp.UI.Pages.SettingsPage;
-using System;
-*/
-
-/* Необъединенное слияние из проекта "CryptoApp.UI (net8.0-android)"
-До:
-using System;
-После:
-using CryptoApp.UI.Pages.SettingsPage;
-using CryptoApp.UI.Pages.SettingsPage.SettingsPage;
-using System;
-*/
-
-/* Необъединенное слияние из проекта "CryptoApp.UI (net8.0-ios)"
-До:
-using System;
-После:
-using CryptoApp.UI.Pages.SettingsPage;
-using CryptoApp.UI.Pages.SettingsPage.SettingsPage;
-using CryptoApp.UI.Pages.SettingsPage.SettingsPage.SettingsPage;
-using System;
-*/
+using CryptoApp.UI.Pages.CoinSearchPage;
 using CryptoApp.UI.Pages.SettingsPage;
 using System;
 using System.Collections.Generic;
@@ -80,6 +54,31 @@ namespace CryptoApp.UI.State
             typeof(NewsPage),
             typeof(SettingsPage)
         };
+
+        #endregion
+
+        #region Loader
+
+        private bool _showLoader;
+        public bool ShowLoader
+        {
+            get => _showLoader;
+            set
+            {
+                if (_showLoader != value)
+                {
+                    _showLoader = value;
+                    OnShowLoaderChanged();
+                }
+            }
+        }
+
+        public event Action ShowLoaderChanged = null!;
+
+        private void OnShowLoaderChanged()
+        {
+            ShowLoaderChanged?.Invoke();
+        }
 
         #endregion
     }
