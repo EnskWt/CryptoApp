@@ -18,13 +18,46 @@ namespace CryptoApp.Services.CoinSearchService
             _dataFetcher = dataFetcher;
         }
 
-        public async Task<List<ShortCoinViewModel>?> GetCoinsForSearchCoinsPicker()
+        public async Task<List<ShortCoinViewModel>> GetInitialCoinsForSearchCoinsPicker()
         {
-            var coinGeckoCoins = await _dataFetcher.GetAllCoinsAsync();
+            var coinGeckoCoins = await _dataFetcher.GetTrendingCoinsAsync();
 
-            var coins = coinGeckoCoins?.Take(10).Select(c => c.ToCoin().ToShortCoin()).ToList();
+            if (coinGeckoCoins == null)
+            {
+                return new List<ShortCoinViewModel>();
+            }
+
+            var coins = coinGeckoCoins.Take(10).Select(c => c.ToCoin().ToShortCoin()).ToList();
 
             return coins;
+        }
+
+        public async Task<List<ShortCoinViewModel>> GetCoinsForSearchCoinsPicker(string searchQuery)
+        {
+            var coinGeckoCoins = await _dataFetcher.GetFilteredCoinsAsync(searchQuery);
+
+            if (coinGeckoCoins == null)
+            {
+                return new List<ShortCoinViewModel>();
+            }
+
+            var coins = coinGeckoCoins.Take(10).Select(c => c.ToCoin().ToShortCoin()).ToList();
+
+            return coins;
+        }
+
+        public async Task<CoinInfoViewModel> GetCoinInfo(string coinId)
+        {
+            var coinGeckoCoin = await _dataFetcher.GetCoinInfoAsync(coinId);
+
+            if (coinGeckoCoin == null)
+            {
+                return new CoinInfoViewModel();
+            }
+
+            var coin = coinGeckoCoin.ToCoin().ToCoinInfo();
+
+            return coin;
         }
     }
 }

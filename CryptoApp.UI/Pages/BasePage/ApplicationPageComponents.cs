@@ -7,7 +7,7 @@ namespace CryptoApp.UI.Pages.BasePage
     {
         #region Reusable components
 
-        protected async Task<Label> GetBigLabel(LabelType labelType)
+        protected async Task<Label> GetLargeLabel(LabelType labelType)
         {
             var label = new Label
             {
@@ -32,6 +32,8 @@ namespace CryptoApp.UI.Pages.BasePage
 
             return await Task.FromResult(label);
         }
+
+
 
         #endregion
 

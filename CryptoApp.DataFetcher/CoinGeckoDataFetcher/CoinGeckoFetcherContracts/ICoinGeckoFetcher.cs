@@ -1,11 +1,18 @@
 ﻿using CryptoApp.DataFetcher.Attributes;
-using CryptoApp.DataFetcher.CoinGeckoDataFetcher.CoinGeckoModels;
+using CryptoApp.DataFetcher.CoinGeckoDataFetcher.Models.CoinGeckoModels;
 
 namespace CryptoApp.DataFetcher.CoinGeckoDataFetcher.CoinGeckoFetcherContracts
 {
     public interface ICoinGeckoFetcher
     {
-        [Endpoint("coins/list")]
         Task<List<CoinGeckoCoin>?> GetAllCoinsAsync();
+
+        Task<List<CoinGeckoCoin>?> GetTrendingCoinsAsync();
+
+        Task<List<CoinGeckoCoin>?> GetFilteredCoinsAsync(string query);
+
+        Task<CoinGeckoCoin?> GetCoinInfoAsync(string coidId);
+
+        Task<double> GetExchangeRateAsync(string inputCoinId, string outputCoinId);
     }
 }

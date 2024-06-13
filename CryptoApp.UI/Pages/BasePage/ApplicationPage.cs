@@ -38,7 +38,11 @@ namespace CryptoApp.UI.Pages.BasePage
             {
                 Children =
                 {
-                    _contentView,
+
+                    new ScrollView
+                    {
+                        Content = _contentView
+                    },
                     _loader
                 }
             };
@@ -57,9 +61,9 @@ namespace CryptoApp.UI.Pages.BasePage
 
         private async Task BuildPage()
         {
-            App.StateStorage.ShowLoader = true;
+            await ShowLoader();
             _contentView.Content = await BuildPageLayout();
-            App.StateStorage.ShowLoader = false;
+            await HideLoader();
             await Task.CompletedTask;
         }
 
@@ -77,6 +81,18 @@ namespace CryptoApp.UI.Pages.BasePage
         protected async void RefreshPage()
         {
             await BuildPage();
+        }
+
+        protected async Task ShowLoader()
+        {
+            App.StateStorage.ShowLoader = true;
+            await Task.CompletedTask;
+        }
+
+        protected async Task HideLoader()
+        {
+            App.StateStorage.ShowLoader = false;
+            await Task.CompletedTask;
         }
 
         protected virtual async Task<Layout> BuildPageLayout()

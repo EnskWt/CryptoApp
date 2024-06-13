@@ -1,6 +1,7 @@
 ﻿using CryptoApp.UI.LanguageFramework;
 using CryptoApp.UI.Pages;
 using CryptoApp.UI.Pages.CoinSearchPage;
+using CryptoApp.UI.Pages.ConverterPage;
 using CryptoApp.UI.Pages.SettingsPage;
 using System;
 using System.Collections.Generic;

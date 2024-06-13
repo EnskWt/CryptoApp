@@ -1,4 +1,5 @@
-﻿using CryptoApp.UI.ExtensionMethods;
+﻿using CryptoApp.UI.CustomControls;
+using CryptoApp.UI.ExtensionMethods;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
@@ -24,6 +25,12 @@ namespace CryptoApp.UI
 
             builder
                 .UseMauiApp<App>()
+#if ANDROID
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    handlers.AddHandler<CustomViewCell, Platforms.Android.CustomViewCellHandler>();
+                })
+#endif
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

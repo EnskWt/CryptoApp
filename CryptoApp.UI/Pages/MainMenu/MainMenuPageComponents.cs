@@ -20,7 +20,7 @@ namespace CryptoApp.UI.Pages.MainMenu
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 150,
-                HeightRequest = 50,
+                HeightRequest = 150,
                 Margin = new Thickness(10)
             };
 

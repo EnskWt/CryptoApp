@@ -10,6 +10,10 @@ namespace CryptoApp.Services.CoinSearchService
 {
     public interface ICoinSearchService
     {
-        Task<List<ShortCoinViewModel>?> GetCoinsForSearchCoinsPicker();
+        Task<List<ShortCoinViewModel>> GetInitialCoinsForSearchCoinsPicker();
+
+        Task<List<ShortCoinViewModel>> GetCoinsForSearchCoinsPicker(string searchQuery);
+
+        Task<CoinInfoViewModel> GetCoinInfo(string coinId);
     }
 }

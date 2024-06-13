@@ -8,12 +8,34 @@ namespace CryptoApp.UI.LanguageFramework
 {
     public enum LabelType
     {
-        SettingsLabel,
         ChangeAppThemeLabel,
         ChangeAppLanguageLabel,
 
-        MainMenuLabel,
-
         BackButtonLabel,
+        ClearButtonLabel,
+
+        SearchCoinLabel,
+        NoDataLabel,
+
+        SearchButtonLabel,
+        TypeCoinNameLabel,
+
+        CoinSymbolLabel,
+        CoinNameLabel,
+        CoinPriceLabel,
+        CoinMarketCapLabel,
+        CoinTotalVolumeLabel,
+        CoinHigh24hLabel,
+        CoinLow24hLabel,
+        CoinPriceChange24hLabel,
+        CoinPriceChangePercentage24hLabel,
+        CoinMarketCapRankLabel,
+
+        InputAmountLabel,
+        OutputAmountLabel,
+        InputCurrencyLabel,
+        OutputCurrencyLabel,
+
+        ConvertButtonLabel,
     }
 }

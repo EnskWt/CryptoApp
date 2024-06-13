@@ -12,13 +12,35 @@ namespace CryptoApp.UI.LanguageFramework.Vocabularies
 
         public Dictionary<LabelType, string> Labels { get; } = new Dictionary<LabelType, string>
         {
-            { LabelType.SettingsLabel, "Settings" },
             { LabelType.ChangeAppThemeLabel, "Dark Mode" },
             { LabelType.ChangeAppLanguageLabel, "Language" },
 
-            { LabelType.MainMenuLabel, "Main Menu" },
-
             { LabelType.BackButtonLabel, "Back" },
+            { LabelType.ClearButtonLabel, "Clear" },
+
+            { LabelType.SearchCoinLabel, "Search Coin" },
+            { LabelType.NoDataLabel, "No data" },
+
+            { LabelType.SearchButtonLabel, "Search" },
+            { LabelType.TypeCoinNameLabel, "Type coin name..." },
+
+            { LabelType.CoinSymbolLabel, "Symbol" },
+            { LabelType.CoinNameLabel, "Name" },
+            { LabelType.CoinPriceLabel, "Price" },
+            { LabelType.CoinMarketCapLabel, "Market Cap" },
+            { LabelType.CoinTotalVolumeLabel, "Volume" },
+            { LabelType.CoinHigh24hLabel, "Highest price in 24h" },
+            { LabelType.CoinLow24hLabel, "Lowest price in 24h" },
+            { LabelType.CoinPriceChange24hLabel, "Price change per 24h" },
+            { LabelType.CoinPriceChangePercentage24hLabel, "Percentage price change per 24h" },
+            { LabelType.CoinMarketCapRankLabel, "Market Cap Rank" },
+
+            { LabelType.InputAmountLabel, "Input amount..." },
+            { LabelType.OutputAmountLabel, "Output amount..." },
+            { LabelType.InputCurrencyLabel, "Input currency..." },
+            { LabelType.OutputCurrencyLabel, "Output currency..."},
+
+            { LabelType.ConvertButtonLabel, "Convert" }
         };
 
         public Dictionary<string, string> Pages { get; } = new Dictionary<string, string>

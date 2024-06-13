@@ -1,7 +1,10 @@
 ﻿using CryptoApp.DataFetcher.CoinGeckoDataFetcher;
 using CryptoApp.DataFetcher.CoinGeckoDataFetcher.CoinGeckoFetcherContracts;
 using CryptoApp.Services.CoinSearchService;
+using CryptoApp.Services.ConverterService;
+using CryptoApp.UI.Pages;
 using CryptoApp.UI.Pages.CoinSearchPage;
+using CryptoApp.UI.Pages.ConverterPage;
 using CryptoApp.UI.Pages.MainMenu;
 using CryptoApp.UI.Pages.SettingsPage;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +45,7 @@ namespace CryptoApp.UI.ExtensionMethods
         private static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<ICoinSearchService, CoinSearchService>();
+            services.AddTransient<IConverterService, ConverterService>();
         }
 
         private static void AddPages(this IServiceCollection services)
@@ -49,6 +53,7 @@ namespace CryptoApp.UI.ExtensionMethods
             services.AddTransient<MainMenuPage>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<CoinSearchPage>();
+            services.AddTransient<ConverterPage>();
         }
     }
 }

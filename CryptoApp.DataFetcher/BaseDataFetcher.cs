@@ -10,7 +10,7 @@ namespace CryptoApp.DataFetcher
 {
     public abstract class BaseDataFetcher
     {
-        protected string GetEndpointUrl([CallerMemberName] string methodName = "")
+        protected string GetEndpointUrl(object? parameters = null, [CallerMemberName] string methodName = "")
         {
             var methodInfo = GetType().GetMethod(methodName);
             var attribute = methodInfo?.GetCustomAttributes(typeof(EndpointAttribute), false).FirstOrDefault() as EndpointAttribute;
@@ -20,7 +20,16 @@ namespace CryptoApp.DataFetcher
                 throw new InvalidOperationException($"No endpoint defined for method {methodName}");
             }
 
-            return attribute.Url;
+            var url = attribute.Url;
+            if (parameters != null)
+            {
+                foreach (var prop in parameters.GetType().GetProperties())
+                {
+                    url = url.Replace($"{{{prop.Name}}}", prop.GetValue(parameters)?.ToString());
+                }
+            }
+
+            return url;
         }
     }
 }
