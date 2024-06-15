@@ -29,6 +29,7 @@ namespace CryptoApp.UI.ExtensionMethods
             services.AddDataFetchers();
             services.AddServices();
             services.AddPages();
+            services.AddApp();
         }
 
         private static void AddDataFetchers(this IServiceCollection services)
@@ -66,6 +67,11 @@ namespace CryptoApp.UI.ExtensionMethods
             services.AddTransient<NewsPage>();
             services.AddTransient<MarketAnalyticsPage>();
             services.AddTransient<PredictionsPage>();
+        }
+
+        private static void AddApp(this IServiceCollection services)
+        {
+            services.AddSingleton<App>();
         }
     }
 }

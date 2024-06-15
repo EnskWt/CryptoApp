@@ -18,26 +18,21 @@ namespace CryptoApp.UI
         {
             var builder = MauiApp.CreateBuilder();
 
-            var assembly = Assembly.GetExecutingAssembly();
-            using var stream = assembly.GetManifestResourceStream("CryptoApp.UI.appsettings.json");
-
-            var config = new ConfigurationBuilder()
-                        .AddJsonStream(stream!)
-                        .Build();
+            var config = GetConfiguration();
 
             builder.Configuration.AddConfiguration(config);
-            builder.Services.AddSingleton<IConfiguration>(config);
+            builder.Services.AddSingleton(config);
 
             builder
                 .UseMauiApp<App>()
                 .UseSkiaSharp()
                 .UseOxyPlotSkia()
-#if ANDROID
+                #if ANDROID
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddHandler<CustomViewCell, Platforms.Android.CustomViewCellHandler>();
                 })
-#endif
+                #endif
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -46,22 +41,9 @@ namespace CryptoApp.UI
 
             builder.Services.Configure();
 
-            builder.Services.AddSingleton<App>();
-
-            // TODO
-#if WINDOWS
-            SwitchHandler.Mapper.AppendToMapping("Custom", (h, v) =>
-            {
-                h.PlatformView.OffContent = string.Empty;
-                h.PlatformView.OnContent = string.Empty;
-
-                h.PlatformView.MinWidth = 0;
-            });
-#endif
-
-#if DEBUG
+            #if DEBUG
             builder.Logging.AddDebug();
-#endif
+            #endif
 
             var mauiApp = builder.Build();
 
@@ -69,6 +51,18 @@ namespace CryptoApp.UI
 
             var app = serviceProvider.GetRequiredService<App>();
             return mauiApp;
+        }
+
+        private static IConfiguration GetConfiguration()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            using var stream = assembly.GetManifestResourceStream("CryptoApp.UI.appsettings.json");
+
+            var config = new ConfigurationBuilder()
+                        .AddJsonStream(stream!)
+                        .Build();
+
+            return config;
         }
     }
 }
