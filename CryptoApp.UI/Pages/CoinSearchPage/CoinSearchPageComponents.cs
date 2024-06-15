@@ -271,7 +271,7 @@ namespace CryptoApp.UI.Pages.CoinSearchPage
 
             var valueLabel = new Label
             {
-                Text = value,
+                Text = value ?? "N/A",
                 FontSize = 16,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center

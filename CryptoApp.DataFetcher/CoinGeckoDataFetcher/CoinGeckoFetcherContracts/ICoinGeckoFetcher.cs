@@ -13,6 +13,12 @@ namespace CryptoApp.DataFetcher.CoinGeckoDataFetcher.CoinGeckoFetcherContracts
 
         Task<CoinGeckoCoin?> GetCoinInfoAsync(string coidId);
 
-        Task<double> GetExchangeRateAsync(string inputCoinId, string outputCoinId);
+        Task<CoinGeckoGlobalData?> GetGlobalMarketDataAsync();
+
+        Task<List<CoinGeckoMarketCoin>?> GetTopCoinsAsync();
+
+        Task<List<CoinGeckoMarketCoin>?> GetRecommendedCoinsAsync();
+
+        Task<CoinGeckoMarketChartData?> GetMarketChartDataAsync(string coinId);
     }
 }

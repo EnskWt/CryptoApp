@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoApp.Shared.LanguageStorage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,25 @@ namespace CryptoApp.UI.LanguageFramework.Vocabularies
             { LabelType.InputCurrencyLabel, "Waluta wejściowa..." },
             { LabelType.OutputCurrencyLabel, "Waluta wyjściowa..." },
             
-            { LabelType.ConvertButtonLabel, "Konwertuj" }
+            { LabelType.ConvertButtonLabel, "Konwertuj" },
+
+            { LabelType.GlobalMarketDataLabel, "Dane rynkowe globalne" },
+            { LabelType.ActiveCryptocurrenciesCountLabel, "Aktywne kryptowaluty" },
+            { LabelType.MarketsCountLabel, "Rynki" },
+            { LabelType.MarketCapChangePercentageLabel, "Zmiana kapitalizacji rynkowej (24h)" },
+            { LabelType.UpcomingIcosCountLabel, "Nadchodzące ICO" },
+            { LabelType.OngoingIcosCountLabel, "Trwające ICO" },
+            { LabelType.EndedIcosCountLabel, "Zakończone ICO" },
+            { LabelType.TotalVolumeLabel, "Całkowity wolumen (24h)" },
+            { LabelType.TopCoinsLabel, "Top 10 monet" },
+            { LabelType.RecommendedCoinsLabel, "Zalecane monety" },
+
+            { LabelType.PricesChartLabel, "Wykresy cen" },
+            { LabelType.MarketCapsChartLabel, "Wykresy kapitalizacji rynkowej" },
+            { LabelType.TotalVolumesChartLabel, "Wykresy wolumenów" },
+
+            { LabelType.ChartTimeAxisLabel, "Czas" },
+            { LabelType.ChartPriceAxisLabel, "Cena" },
         };
 
         public Dictionary<string, string> Pages { get; } = new Dictionary<string, string>

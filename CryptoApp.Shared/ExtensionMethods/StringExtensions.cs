@@ -21,6 +21,11 @@ namespace CryptoApp.Shared.ExtensionMethods
             return string.Format("{0}{1}{2}", value.ToString("0.##"), units[order], suffix);
         }
 
+        public static string ToStringWithSuffix(this double value, char suffix)
+        {
+            return string.Format("{0}{1}", value.ToString("0.##"), suffix);
+        }
+
         public static string ToStringWithSuffix(this int value, char suffix)
         {
             return string.Format("{0}{1}", suffix, value.ToString());

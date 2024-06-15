@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoApp.UI.LanguageFramework
+namespace CryptoApp.Shared.LanguageStorage
 {
     public enum Language
     {

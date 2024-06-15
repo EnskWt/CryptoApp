@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoApp.Shared.LanguageStorage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,24 @@ namespace CryptoApp.UI.LanguageFramework.Vocabularies
             { LabelType.InputCurrencyLabel, "Input currency..." },
             { LabelType.OutputCurrencyLabel, "Output currency..."},
 
-            { LabelType.ConvertButtonLabel, "Convert" }
+            { LabelType.ConvertButtonLabel, "Convert" },
+            { LabelType.GlobalMarketDataLabel, "Global market data" },
+            { LabelType.ActiveCryptocurrenciesCountLabel, "Active cryptocurrencies" },
+            { LabelType.MarketsCountLabel, "Markets" },
+            { LabelType.MarketCapChangePercentageLabel, "Market cap change (24h)" },
+            { LabelType.UpcomingIcosCountLabel, "Upcoming ICOs" },
+            { LabelType.OngoingIcosCountLabel, "Ongoing ICOs" },
+            { LabelType.EndedIcosCountLabel, "Ended ICOs" },
+            { LabelType.TotalVolumeLabel, "Total volume (24h)" },
+            { LabelType.TopCoinsLabel, "Top 10 coins" },
+            { LabelType.RecommendedCoinsLabel, "Recommended coins" },
+
+            { LabelType.PricesChartLabel, "Prices chart" },
+            { LabelType.MarketCapsChartLabel, "Market caps chart" },
+            { LabelType.TotalVolumesChartLabel, "Total volumes chart" },
+
+            { LabelType.ChartTimeAxisLabel, "Time" },
+            { LabelType.ChartPriceAxisLabel, "Price" },
         };
 
         public Dictionary<string, string> Pages { get; } = new Dictionary<string, string>

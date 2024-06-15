@@ -3,7 +3,7 @@ using CryptoApp.Services.Models;
 using CryptoApp.Services.ViewModels;
 using CryptoApp.Shared.ExtensionMethods;
 
-namespace CryptoApp.Services.ConverterService
+namespace CryptoApp.Services.Services.ConverterService
 {
     public class ConverterService : IConverterService
     {

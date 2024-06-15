@@ -1,4 +1,4 @@
-﻿using CryptoApp.Services.ConverterService;
+﻿using CryptoApp.Services.Services.ConverterService;
 using CryptoApp.UI.Attributes;
 using CryptoApp.UI.Pages.BasePage;
 using System;

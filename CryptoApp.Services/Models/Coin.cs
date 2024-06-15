@@ -43,5 +43,24 @@ namespace CryptoApp.Services.Models
                 MarketCapRank = coin.MarketCapRank
             };
         }
+
+        public static Coin ToCoin(this CoinGeckoMarketCoin coin)
+        {
+            return new Coin
+            {
+                Id = coin.Id,
+                Symbol = coin.Symbol,
+                Name = coin.Name,
+                Image = coin.Image,
+                CurrentPrice = coin.MarketData?.CurrentPrice?["usd"],
+                MarketCap = coin.MarketData?.MarketCap?["usd"],
+                TotalVolume = coin.MarketData?.TotalVolume?["usd"],
+                High24h = coin.MarketData?.High24h?["usd"],
+                Low24h = coin.MarketData?.Low24h?["usd"],
+                PriceChange24h = coin.MarketData?.PriceChange24h,
+                PriceChangePercentage24h = coin.MarketData?.PriceChangePercentage24h,
+                MarketCapRank = coin.MarketCapRank
+            };
+        }
     }
 }

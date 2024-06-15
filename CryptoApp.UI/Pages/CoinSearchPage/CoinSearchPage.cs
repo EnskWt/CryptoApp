@@ -1,4 +1,4 @@
-﻿using CryptoApp.Services.CoinSearchService;
+﻿using CryptoApp.Services.Services.CoinSearchService;
 using CryptoApp.Services.ViewModels;
 using CryptoApp.UI.Attributes;
 using CryptoApp.UI.CustomControls;

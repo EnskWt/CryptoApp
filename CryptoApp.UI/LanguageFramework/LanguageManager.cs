@@ -1,4 +1,5 @@
-﻿using CryptoApp.UI.LanguageFramework.Vocabularies;
+﻿using CryptoApp.Shared.LanguageStorage;
+using CryptoApp.UI.LanguageFramework.Vocabularies;
 using CryptoApp.UI.State;
 using System;
 using System.Collections.Generic;

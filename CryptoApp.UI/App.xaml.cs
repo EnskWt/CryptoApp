@@ -1,4 +1,5 @@
-﻿using CryptoApp.UI.LanguageFramework;
+﻿using CryptoApp.Shared.LanguageStorage;
+using CryptoApp.UI.LanguageFramework;
 using CryptoApp.UI.Pages.MainMenu;
 using CryptoApp.UI.State;
 

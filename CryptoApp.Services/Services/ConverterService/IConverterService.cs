@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoApp.Services.ConverterService
+namespace CryptoApp.Services.Services.ConverterService
 {
     public interface IConverterService
     {

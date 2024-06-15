@@ -1,4 +1,5 @@
-﻿using CryptoApp.UI.LanguageFramework;
+﻿using CryptoApp.Shared.LanguageStorage;
+using CryptoApp.UI.LanguageFramework;
 using CryptoApp.UI.Pages.BasePage;
 using System;
 using System.Collections.Generic;

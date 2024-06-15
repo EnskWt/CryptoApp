@@ -3,7 +3,12 @@ using CryptoApp.UI.ExtensionMethods;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
+using OxyPlot.Maui.Skia;
 using System.Reflection;
+using OxyPlot;
+using OxyPlot.Maui;
+using OxyPlot.Series;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace CryptoApp.UI
 {
@@ -25,6 +30,8 @@ namespace CryptoApp.UI
 
             builder
                 .UseMauiApp<App>()
+                .UseSkiaSharp()
+                .UseOxyPlotSkia()
 #if ANDROID
                 .ConfigureMauiHandlers(handlers =>
                 {

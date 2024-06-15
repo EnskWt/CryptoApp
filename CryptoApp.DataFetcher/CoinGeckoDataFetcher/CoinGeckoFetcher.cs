@@ -64,22 +64,50 @@ namespace CryptoApp.DataFetcher.CoinGeckoDataFetcher
             return coinGeckoCoin;
         }
 
-        [Endpoint("simple/price?ids={inputCoinId}&vs_currencies={outputCoinId}")]
-        public async Task<double> GetExchangeRateAsync(string inputCoinId, string outputCoinId)
+        [Endpoint("global")]
+        public async Task<CoinGeckoGlobalData?> GetGlobalMarketDataAsync()
         {
-            var endpoint = GetEndpointUrl(new { inputCoinId, outputCoinId });
+            var endpoint = GetEndpointUrl();
 
             var response = await _httpClient.GetStringAsync(endpoint);
-            var responseObject = JsonConvert.DeserializeObject<GetExchangeRateResponse>(response);
+            var responseObject = JsonConvert.DeserializeObject<GetGlobalMarketDataResponse>(response);
 
-            var rates = responseObject?.Rates;
+            var globalData = responseObject?.Data;
 
-            if (rates != null && rates.ContainsKey(inputCoinId) && rates[inputCoinId].ContainsKey(outputCoinId))
-            {
-                return rates[inputCoinId][outputCoinId];
-            }
+            return globalData;
+        }
 
-            return 0;
+        [Endpoint("coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1")]
+        public async Task<List<CoinGeckoMarketCoin>?> GetTopCoinsAsync()
+        {
+            var endpoint = GetEndpointUrl();
+
+            var response = await _httpClient.GetStringAsync(endpoint);
+            var topCoins = JsonConvert.DeserializeObject<List<CoinGeckoMarketCoin>>(response);
+
+            return topCoins;
+        }
+
+        [Endpoint("coins/markets?vs_currency=usd&order=price_change_percentage_7d_desc&per_page=10&page=1")]
+        public async Task<List<CoinGeckoMarketCoin>?> GetRecommendedCoinsAsync()
+        {
+            var endpoint = GetEndpointUrl();
+
+            var response = await _httpClient.GetStringAsync(endpoint);
+            var recommendedCoins = JsonConvert.DeserializeObject<List<CoinGeckoMarketCoin>>(response);
+
+            return recommendedCoins;
+        }
+
+        [Endpoint("coins/{coinId}/market_chart?vs_currency=usd&days=7")]
+        public async Task<CoinGeckoMarketChartData?> GetMarketChartDataAsync(string coinId)
+        {
+            var endpoint = GetEndpointUrl(new { coinId });
+
+            var response = await _httpClient.GetStringAsync(endpoint);
+            var marketChartData = JsonConvert.DeserializeObject<CoinGeckoMarketChartData>(response);
+
+            return marketChartData;
         }
     }
 }

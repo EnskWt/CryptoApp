@@ -1,7 +1,11 @@
-﻿using CryptoApp.UI.LanguageFramework;
+﻿using CryptoApp.Shared.LanguageStorage;
+using CryptoApp.UI.LanguageFramework;
 using CryptoApp.UI.Pages;
 using CryptoApp.UI.Pages.CoinSearchPage;
 using CryptoApp.UI.Pages.ConverterPage;
+using CryptoApp.UI.Pages.MarketAnalyticsPage;
+using CryptoApp.UI.Pages.NewsPage;
+using CryptoApp.UI.Pages.PredictionsPage;
 using CryptoApp.UI.Pages.SettingsPage;
 using System;
 using System.Collections.Generic;
@@ -48,7 +52,7 @@ namespace CryptoApp.UI.State
 
         public List<Type> MainMenuOptions { get; } = new List<Type>()
         {
-            typeof(AnalyticsPage),
+            typeof(MarketAnalyticsPage),
             typeof(PredictionsPage),
             typeof(CoinSearchPage),
             typeof(ConverterPage),

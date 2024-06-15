@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoApp.Services.CoinSearchService
+namespace CryptoApp.Services.Services.CoinSearchService
 {
     public class CoinSearchService : ICoinSearchService
     {

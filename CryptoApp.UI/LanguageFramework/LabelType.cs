@@ -37,5 +37,23 @@ namespace CryptoApp.UI.LanguageFramework
         OutputCurrencyLabel,
 
         ConvertButtonLabel,
+
+        GlobalMarketDataLabel,
+        ActiveCryptocurrenciesCountLabel,
+        MarketsCountLabel,
+        MarketCapChangePercentageLabel,
+        UpcomingIcosCountLabel,
+        OngoingIcosCountLabel,
+        EndedIcosCountLabel,
+        TotalVolumeLabel,
+        TopCoinsLabel,
+        RecommendedCoinsLabel,
+
+        PricesChartLabel,
+        MarketCapsChartLabel,
+        TotalVolumesChartLabel,
+
+        ChartTimeAxisLabel,
+        ChartPriceAxisLabel,
     }
 }
