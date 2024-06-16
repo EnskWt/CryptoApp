@@ -8,7 +8,7 @@ using CryptoApp.Services.Services.PredictionsService;
 using CryptoApp.UI.Pages;
 using CryptoApp.UI.Pages.CoinSearchPage;
 using CryptoApp.UI.Pages.ConverterPage;
-using CryptoApp.UI.Pages.MainMenu;
+using CryptoApp.UI.Pages.MainMenuPage;
 using CryptoApp.UI.Pages.MarketAnalyticsPage;
 using CryptoApp.UI.Pages.NewsPage;
 using CryptoApp.UI.Pages.PredictionsPage;

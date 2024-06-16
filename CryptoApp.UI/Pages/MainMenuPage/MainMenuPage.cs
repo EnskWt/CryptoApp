@@ -2,7 +2,7 @@ using CryptoApp.UI.Attributes;
 using CryptoApp.UI.Pages.BasePage;
 using Microsoft.Maui.Layouts;
 
-namespace CryptoApp.UI.Pages.MainMenu
+namespace CryptoApp.UI.Pages.MainMenuPage
 {
     [PageTitle("Main Menu")]
     public partial class MainMenuPage : ApplicationPage

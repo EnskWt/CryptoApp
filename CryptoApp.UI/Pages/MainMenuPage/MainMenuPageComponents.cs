@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoApp.UI.Pages.MainMenu
+namespace CryptoApp.UI.Pages.MainMenuPage
 {
     public partial class MainMenuPage : ApplicationPage
     {
